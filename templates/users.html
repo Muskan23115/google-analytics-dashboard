@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Total Users{% endblock %}
+{% block content %}
+<h2>Total Users (Last 7 Days)</h2>
+<canvas id="userChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  async function fetchUserData() {
+    const response = await fetch('/analytics/users');  // ✅ Fixed endpoint
+    const result = await response.json();
+
+    const ctx = document.getElementById('userChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: result.labels,
+        datasets: [{
+          label: 'Users',
+          data: result.data,
+          backgroundColor: 'rgba(0, 188, 212, 0.2)',
+          borderColor: 'rgba(0, 188, 212, 1)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3,
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', fetchUserData);
+</script>
+
+{% endblock %}
