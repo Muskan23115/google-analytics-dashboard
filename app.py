@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, render_template
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
+from google.analytics.data_v1beta.types import RunRealtimeReportRequest  
 from google.analytics.data_v1beta.types import DateRange, Dimension, Metric, RunReportRequest
 from google.oauth2 import service_account
 
@@ -24,15 +25,14 @@ def dashboard():
 
 @app.route('/analytics/users')
 def get_users_data():
-    request = RunReportRequest(
+    request = RunRealtimeReportRequest(
         property=f"properties/{PROPERTY_ID}",
-        dimensions=[Dimension(name="date")],
-        metrics=[Metric(name="activeUsers")],  # <-- changed here
-        date_ranges=[DateRange(start_date="7daysAgo", end_date="today")]
+        dimensions=[Dimension(name="minutesAgo")],
+        metrics=[Metric(name="activeUsers")]
     )
-    response = client.run_report(request)
+    response = client.run_realtime_report(request)
 
-    labels = [row.dimension_values[0].value for row in response.rows]
+    labels = [row.dimension_values[0].value + " min ago" for row in response.rows]
     data = [int(row.metric_values[0].value) for row in response.rows]
 
     return jsonify({"labels": labels, "data": data})

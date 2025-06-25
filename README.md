@@ -32,29 +32,3 @@ This project is a **website analytics dashboard** built using **Flask** and the 
    ```bash
    git clone https://github.com/yourusername/google-analytics-dashboard.git
    cd google-analytics-dashboard
-
-
-2. **Create a virtual environment & install dependencies** 
-   python -m venv venv
-   venv\Scripts\activate   # On Windows
-   pip install -r requirements.txt
-
-
-3. **Google Analytics Setup**
-   1. Create a Google Cloud project and enable Google Analytics Data API
-
-   2. Create a Service Account and download your_credentials.json
-
-   3. Place your_credentials.json in the root of your project (but DO NOT commit it)
-
-
-4. **Run the App**
-   python app.py
-
-**⚠️ Notes**
-   1. Ensure your GA4 property is collecting real website data or simulate data with tools like Tag Assistant
-
-   2. Never push your_credentials.json — it contains sensitive keys
-
-   3. Works best with a live or test site receiving traffic
-
