@@ -1,27 +1,44 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  const response = await fetch('/api/users');
-  const data = await response.json();
+document.addEventListener("DOMContentLoaded", () => {
+  const ctx = document.getElementById("usersChart").getContext("2d");
 
-  const ctx = document.getElementById('userChart').getContext('2d');
-  new Chart(ctx, {
+  const chart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: data.labels,
+      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       datasets: [{
-        label: 'Users',
-        data: data.data,
-        backgroundColor: 'rgba(0, 188, 212, 0.2)',
-        borderColor: 'rgba(0, 188, 212, 1)',
-        borderWidth: 2,
-        fill: true,
-        tension: 0.4
+        label: "Active Users",
+        data: [120, 200, 180, 220, 250, 300, 280],
+        fill: false,
+        borderColor: "#efe8e8",
+        tension: 0.4,
+        pointBackgroundColor: "#6366f1"
       }]
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
       scales: {
+        x: {
+          ticks: {
+            color: '#efe8e8'
+          },
+          grid: {
+            display: false
+          }
+        },
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          ticks: {
+            color: '#efe8e8' 
+          },
+          grid: {
+            color: "#3b3b5e"
+          }
         }
       }
     }

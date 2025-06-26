@@ -1,28 +1,43 @@
-// static/js/countries.js
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    const response = await fetch('/analytics/countries');
-    const result = await response.json();
+document.addEventListener("DOMContentLoaded", () => {
+  const ctx = document.getElementById("countryChart").getContext("2d");
 
-    const ctx = document.getElementById('countriesChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: result.labels,
-        datasets: [{
-          label: 'Users by Country',
-          data: result.data,
-          backgroundColor: [
-            '#00bcd4', '#3f51b5', '#8bc34a',
-            '#ff9800', '#9c27b0', '#e91e63', '#ff5722'
-          ]
-        }]
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["USA", "India", "UK", "Germany", "Canada"],
+      datasets: [{
+        label: "Users",
+        data: [1200, 950, 780, 640, 430],
+        backgroundColor: ["#6366f1", "#10b981", "#f59e0b", "#3b82f6", "#ef4444"],
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false
+        }
       },
-      options: {
-        responsive: true
+      scales: {
+        x: {
+          ticks: {
+            color: "#ffffff"  // ⬅ Change this to any color you like
+          },
+          grid: {
+            color: "#444" // Optional: grid line color
+          }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: "#ffffff"  // ⬅ Change this to match your theme
+          },
+          grid: {
+            color: "#444"
+          }
+        }
       }
-    });
-  } catch (err) {
-    console.error('Error fetching country data:', err);
-  }
+    }
+  });
 });

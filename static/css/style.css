@@ -1,57 +1,356 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
-  transition: background-color 0.4s ease;
+  font-family: 'Inter', sans-serif;
+  background: #f9fafe;
+  color: #1e1e2f;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #282c34;
+  background: white;
   padding: 1rem 2rem;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.navbar h1 {
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.welcome-section {
+  background: linear-gradient(to bottom, #5a658a, #4f5482);
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  width: 200px;
+}
+
+.card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.card .value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.change {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.green {
+  color: #22c55e;
+}
+
+.red {
+  color: #ef4444;
+}
+.user-activity-section h2 {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.chart-card {
+  background: #242e53;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.chart-header h4 {
   margin: 0;
+  font-size: 1.2rem;
+}
+
+.chart-header p {
+  margin: 0;
+  color: #efe8e8;
+  font-size: 0.9rem;
+}
+
+.time-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.time-btn {
+  padding: 0.4rem 1rem;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.time-btn.active {
+  background-color: #6366f1;
+  color: white;
+}
+
+.chart-placeholder {
+  background: #607fbc;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.stat-box {
+  flex: 1;
+  min-width: 200px;
+  background: #607fbc;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.03);
+}
+
+.stat-box h3 {
+  margin-top: 0.5rem;
   font-size: 1.5rem;
 }
-
-.navbar a {
-  color: #ccc;
-  margin-left: 1.5rem;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+.device-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
 }
 
-.navbar a:hover {
-  color: #fff;
-}
-
-.container {
+.device-left, .device-right {
+  background: #fff;
   padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: 400px;
+  max-width: 100%;
 }
 
-/* Dark mode */
-body.dark {
-  background-color: #121212;
+.device-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.device-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.device-header p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.dropdown {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-weight: 500;
+}
+
+.progress-group label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.progress-bar {
+  height: 6px;
+  border-radius: 10px;
+  background-color: #e5e7eb;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  height: 6px;
+  border-radius: 10px;
+  left: 0;
+  top: 0;
+}
+
+.progress-bar.blue::before {
+  width: 100%;
+  background-color: #3b82f6;
+}
+
+.progress-bar.purple::before {
+  width: 100%;
+  background-color: #a855f7;
+}
+
+.progress-bar.green::before {
+  width: 100%;
+  background-color: #22c55e;
+}
+
+.os-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.95rem;
+}
+
+.os-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #eee;
+}
+.geo-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.geo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.export-btn {
+  background: #4ade80;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.table-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.country-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.country-table th, .country-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.country-table th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+.country-table tr:hover {
+  background-color: #f0f9ff;
+}
+body.dark-mode {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+body.dark-mode .navbar {
+  background-color: #1f2937;
   color: white;
 }
 
-body.dark .navbar {
-  background-color: #1f1f1f;
+body.dark-mode .nav-links a {
+  color: #cbd5e1;
 }
 
-body.dark .navbar a {
-  color: #bbb;
+body.dark-mode .section,
+body.dark-mode .card,
+body.dark-mode .device-left,
+body.dark-mode .device-right,
+body.dark-mode .geo-card,
+body.dark-mode .table-container {
+  background-color: #1e293b;
+  color: #f3f4f6;
+  box-shadow: none;
 }
 
-body.dark .navbar a:hover {
-  color: white;
+body.dark-mode .time-btn.active {
+  background-color: #4f46e5;
+}
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Gives each section full height */
+section {
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
 }

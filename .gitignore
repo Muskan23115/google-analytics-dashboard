@@ -1,5 +1,15 @@
-your_credentials.json
+# Ignore Python cache and environment
 __pycache__/
 *.pyc
-.env
-.vscode/
+*.pyo
+env/
+venv/
+
+# Ignore credentials
+your_credentials.json
+
+# Ignore OS files
+.DS_Store
+
+# Ignore Flask log files
+*.log

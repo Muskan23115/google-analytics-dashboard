@@ -1,61 +1,28 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <title>Welcome</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #00bcd4, #3f51b5);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      flex-direction: column;
-      text-align: center;
-    }
+{% extends 'base.html' %}
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
+{% block title %}Welcome | Analytics Dashboard{% endblock %}
 
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 40px;
-    }
+{% block content %}
+<section class="section welcome-section">
+  <h1>Welcome to Analytics</h1>
+  <p>Get insights into your website's performance with real-time analytics and comprehensive reports.</p>
 
-    .btn {
-      background-color: white;
-      color: #3f51b5;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #f1f1f1;
-    }
-  </style>
-</head>
-<body>
-  <h1>Welcome to Your Analytics Dashboard</h1>
-  <p>Visualize your user data in a clean and interactive way.</p>
-  <a href="{{ url_for('dashboard') }}" class="btn">Continue to Dashboard</a>
-
-  <!-- Optional Auto Redirect -->
-  <script>
-    setTimeout(() => {
-      window.location.href = "{{ url_for('dashboard') }}";
-    }, 4000);
-  </script>
-</body>
-</html>
+  <div class="card-container">
+    <div class="card">
+      <h4>Users Today</h4>
+      <p class="value">2,845</p>
+      <p class="change green">+12.5%</p>
+    </div>
+    <div class="card">
+      <h4>New Users</h4>
+      <p class="value">1,257</p>
+      <p class="change green">+8.3%</p>
+    </div>
+    <div class="card">
+      <h4>Avg Session</h4>
+      <p class="value">3:42</p>
+      <p class="change red">-2.1%</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

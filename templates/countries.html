@@ -1,11 +1,65 @@
 {% extends 'base.html' %}
-{% block title %}Countries{% endblock %}
-{% block content %}
-<h2>Users by Country</h2>
-<canvas id="countriesChart"></canvas>
 
-<!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- Custom JS for country chart -->
+{% block title %}Geographic Insights | Analytics Dashboard{% endblock %}
+
+{% block content %}
+<section class="section countries-section">
+  <h2><span class="emoji">🌍</span> Geographic Insights</h2>
+
+  <div class="geo-card">
+    <div class="geo-header">
+      <div>
+        <h4>User Locations</h4>
+        <p>Global distribution of users</p>
+      </div>
+      <button class="export-btn">⬇️ Export</button>
+    </div>
+
+    <div class="chart-placeholder">
+        <canvas id="countryChart" width="400" height="250"></canvas>
+        
+    </div>
+
+  </div>
+
+  <div class="table-container">
+    <h4>Top Countries</h4>
+    <table class="country-table">
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Users</th>
+          <th>Sessions</th>
+          <th>Bounce Rate</th>
+          <th>Avg. Session</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>USA</td>
+          <td>12,300</td>
+          <td>15,000</td>
+          <td>38%</td>
+          <td>3:12</td>
+        </tr>
+        <tr>
+          <td>India</td>
+          <td>9,200</td>
+          <td>10,800</td>
+          <td>41%</td>
+          <td>3:30</td>
+        </tr>
+        <tr>
+          <td>Germany</td>
+          <td>3,500</td>
+          <td>4,000</td>
+          <td>29%</td>
+          <td>3:05</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 <script src="{{ url_for('static', filename='js/countries.js') }}"></script>
+
 {% endblock %}
