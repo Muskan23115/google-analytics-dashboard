@@ -7,22 +7,21 @@
   <h1>Welcome to Analytics</h1>
   <p>Get insights into your website's performance with real-time analytics and comprehensive reports.</p>
 
-  <div class="card-container">
-    <div class="card">
-      <h4>Users Today</h4>
-      <p class="value">2,845</p>
-      <p class="change green">+12.5%</p>
-    </div>
-    <div class="card">
-      <h4>New Users</h4>
-      <p class="value">1,257</p>
-      <p class="change green">+8.3%</p>
-    </div>
-    <div class="card">
-      <h4>Avg Session</h4>
-      <p class="value">3:42</p>
-      <p class="change red">-2.1%</p>
-    </div>
+<div class="card-container">
+  <div class="card">
+    <h4>Users Today</h4>
+    <p class="value" id="usersToday">--</p>
   </div>
-</section>
+  <div class="card">
+    <h4>New Users</h4>
+    <p class="value" id="newUsers">--</p>
+  </div>
+  <div class="card">
+    <h4>Avg Session</h4>
+    <p class="value" id="avgSession">--</p>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/welcome.js') }}"></script>
+
 {% endblock %}

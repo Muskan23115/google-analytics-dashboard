@@ -15,11 +15,10 @@
       <button class="export-btn">⬇️ Export</button>
     </div>
 
+   
     <div class="chart-placeholder">
-        <canvas id="countryChart" width="400" height="250"></canvas>
-        
+      <canvas id="countriesChart" width="400" height="250"></canvas>
     </div>
-
   </div>
 
   <div class="table-container">
@@ -60,6 +59,6 @@
     </table>
   </div>
 </section>
-<script src="{{ url_for('static', filename='js/countries.js') }}"></script>
 
+<script src="{{ url_for('static', filename='js/countries.js') }}"></script>
 {% endblock %}

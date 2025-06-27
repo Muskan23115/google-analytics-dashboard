@@ -1,43 +1,57 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const ctx = document.getElementById("countryChart").getContext("2d");
+document.addEventListener("DOMContentLoaded", async () => {
+  const ctx = document.getElementById("countriesChart").getContext("2d");
+
+  let labels = [], data = [], tableData = [];
+
+  try {
+    const res = await fetch("/api/countries");
+    const json = await res.json();
+    labels = json.labels;
+    data = json.data;
+    tableData = json.table;
+  } catch (err) {
+    console.error("Error fetching countries data:", err);
+    labels = ["India", "USA", "UK"];
+    data = [40, 30, 20];
+    tableData = [];
+  }
+
+  const isDark = document.body.classList.contains('dark-mode');
+  const textColor = isDark ? '#cbd5e1' : '#1e293b';
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["USA", "India", "UK", "Germany", "Canada"],
+      labels,
       datasets: [{
-        label: "Users",
-        data: [1200, 950, 780, 640, 430],
-        backgroundColor: ["#6366f1", "#10b981", "#f59e0b", "#3b82f6", "#ef4444"],
-        borderRadius: 8
+        label: 'Active Users by Country',
+        data,
+        backgroundColor: '#6366f1',
+        borderRadius: 6
       }]
     },
     options: {
       responsive: true,
-      plugins: {
-        legend: {
-          display: false
-        }
-      },
+      plugins: { legend: { display: false } },
       scales: {
-        x: {
-          ticks: {
-            color: "#ffffff"  // ⬅ Change this to any color you like
-          },
-          grid: {
-            color: "#444" // Optional: grid line color
-          }
-        },
-        y: {
-          beginAtZero: true,
-          ticks: {
-            color: "#ffffff"  // ⬅ Change this to match your theme
-          },
-          grid: {
-            color: "#444"
-          }
-        }
+        x: { ticks: { color: textColor } },
+        y: { beginAtZero: true, ticks: { color: textColor } }
       }
     }
+  });
+
+  // ✅ Populate table
+  const tbody = document.querySelector(".country-table tbody");
+  tbody.innerHTML = "";
+  tableData.forEach(row => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${row.country}</td>
+      <td>${row.users}</td>
+      <td>${row.sessions}</td>
+      <td>${row.bounceRate}</td>
+      <td>${row.avgSession}</td>
+    `;
+    tbody.appendChild(tr);
   });
 });

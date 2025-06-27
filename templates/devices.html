@@ -29,13 +29,14 @@
     <div class="device-right">
       <h4>Device Breakdown</h4>
       <div class="progress-group">
-        <label>Mobile <span>68%</span></label>
-        <div class="progress-bar blue" style="width: 68%;"></div>
-        <label>Desktop <span>24%</span></label>
-        <div class="progress-bar purple" style="width: 24%;"></div>
-        <label>Tablet <span>8%</span></label>
-        <div class="progress-bar green" style="width: 8%;"></div>
-      </div>
+<label>Mobile <span id="mobilePercent">--</span></label>
+<div class="progress-bar blue" id="mobileBar" style="width: 0%;"></div>
+
+<label>Desktop <span id="desktopPercent">--</span></label>
+<div class="progress-bar purple" id="desktopBar" style="width: 0%;"></div>
+
+<label>Tablet <span id="tabletPercent">--</span></label>
+<div class="progress-bar green" id="tabletBar" style="width: 0%;"></div>
 
       <h4 style="margin-top: 2rem;">Top Operating Systems</h4>
       <ul class="os-list">
