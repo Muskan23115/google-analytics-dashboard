@@ -7,13 +7,37 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-20XRZ68DDW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  gtag('js', new Date());
+  gtag('config', 'G-20XRZ68DDW');         // Initializes GA
+  
+</script>
+
+<script>
+  window.addEventListener("load", () => {
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: window.location.pathname
+    });
+    console.log("🚀 Forced GA4 page_view event sent.");
+  });
+</script>
+
 </head>
 
 <body>
-
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" height="28"> Analytics Dashboard</div>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" height="28">
+      Analytics Dashboard
+    </div>
     <ul class="nav-links">
       <li><a href="{{ url_for('welcome') }}">Overview</a></li>
       <li><a href="{{ url_for('users') }}">Users</a></li>
@@ -28,11 +52,11 @@
 
   <!-- Page Content -->
   {% block content %}{% endblock %}
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-geo@4.4.0/dist/chartjs-chart-geo.min.js"></script>
 
-
-  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  <!-- JS Libraries -->
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chartjs-chart-geo@4.4.0/dist/chartjs-chart-geo.min.js"></script>
+  <script defer src="{{ url_for('static', filename='js/theme.js') }}"></script>
 </body>
 </html>
